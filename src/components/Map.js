@@ -53,6 +53,7 @@ class Map extends Component {
   };
 
   render() {
+    const { viewport } = this.state;
     return (
       <div>
         <ReactMapGL

@@ -12,6 +12,9 @@ class Search extends Component {
     return (
       <div className={styles.container}>
         <Grid >
+          <p>Vous cherchez : </p>
+          <input type="checkbox" /> Un consultant
+          <input type="checkbox" /> Un client
           <Input
             defaultValue="Hello world"
             inputProps={{
