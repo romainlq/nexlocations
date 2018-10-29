@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import ReactMapGL, { Marker } from 'react-map-gl';
+import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import Pin from './Pin';
+import PinInfo from './PinInfo';
 
 import CITIES from '../data/cities.json';
 const TOKEN =
@@ -12,12 +13,13 @@ class Map extends Component {
 
     this.state = {
       viewport: {
-        width: 400,
-        height: 400,
+        width: 300,
+        height: 200,
         latitude: 48.866667,
         longitude: 2.333333,
         zoom: 8
-      }
+      },
+      popupInfo: null
     };
   }
 
@@ -34,8 +36,8 @@ class Map extends Component {
     this.setState({
       viewport: {
         ...this.state.viewport,
-        width: this.props.width || window.innerWidth,
-        height: this.props.height || window.innerHeight
+        width: this.props.width || window.innerWidth ,
+        height: this.props.height || window.innerHeight-150
       }
     });
   };
@@ -52,12 +54,26 @@ class Map extends Component {
     );
   };
 
+  _renderPopup() {
+    const {popupInfo} = this.state;
+
+    return popupInfo && (
+      <Popup tipSize={5}
+        anchor="top"
+        longitude={popupInfo.longitude}
+        latitude={popupInfo.latitude}
+        onClose={() => this.setState({popupInfo: null})} >
+        <PinInfo info={popupInfo} />
+      </Popup>
+    );
+  }
+
   render() {
     const { viewport } = this.state;
     return (
       <div>
         <ReactMapGL
-          {...this.state.viewport}
+          {...viewport}
           onViewportChange={viewport => this.setState({ viewport })}
           mapboxApiAccessToken={TOKEN}
         >
