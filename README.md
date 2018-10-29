@@ -1,6 +1,6 @@
 # NexLocations
 
-Permet de visualiser ou sont les consultants Nexworld en mission (ou non)
+Permet de visualiser ou sont les consultants en mission (ou non)
 - Afficher si ils sont en congés ou non ?
 
 ## TODO
