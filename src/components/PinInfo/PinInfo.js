@@ -14,7 +14,7 @@ export default class PinInfo extends PureComponent {
             Wikipedia
           </a>
         </div>
-        <img width={240} src={info.image} />
+        <img width={240} src={info.image} alt={info.city}/>
       </div>
     );
   }
