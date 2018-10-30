@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
-import Pin from './Pin';
-import PinInfo from './PinInfo';
+import Pin from '../Pin/Pin';
+import PinInfo from '../PinInfo/PinInfo';
 
-import CITIES from '../data/cities.json';
+import CITIES from '../../data/cities.json';
 const TOKEN =
   'pk.eyJ1Ijoicm9tYWlud24iLCJhIjoiY2pubXNmNWhyMG9udjNxbXFmeHI5eHQyciJ9.KIbKD-d1G7dzmhD1c1h-uw';
 
