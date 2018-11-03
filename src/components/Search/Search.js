@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import { Input, Paper, RadioGroup, FormControl, FormControlLabel, Radio, withStyles } from '@material-ui/core';
+import { Paper, RadioGroup, FormControl, FormControlLabel, Radio, withStyles, Typography } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -8,7 +8,7 @@ const styles = theme => ({
   },
   formControl: {
     margin: theme.spacing.unit * 3,
-    
+
   },
   group: {
     display:'flex',
@@ -39,7 +39,7 @@ class Search extends Component {
         <Grid>
           <Paper>
             <FormControl>
-              <p>Vous recherchez : </p>
+              <Typography>Vous recherchez : </Typography>
               <RadioGroup
                 className={classes.group}
                 value={this.state.value}

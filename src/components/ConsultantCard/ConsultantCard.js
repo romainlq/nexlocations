@@ -22,31 +22,49 @@ const styles = theme => ({
   root: {
     width: '100%',
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
-  },
+    backgroundColor: theme.palette.background.paper
+  }
 });
 
 class ConsultantCard extends Component {
   static propTypes = {
-    prop: PropTypes
+    consultant: PropTypes.shape({
+      firstname: PropTypes.string,
+      lastname: PropTypes.string,
+      mail: PropTypes.string,
+      missions: PropTypes.array
+    })
   };
 
+  _renderList(missions) {
+    return missions.map(mission => (
+      <ListItem key={mission.id}>
+        <ListItemText
+          primary={mission.clientName}
+          secondary={`depuis le ${mission.startDate} et jusqu'au ${mission.endDate}`}
+        />
+      </ListItem>
+    ));
+  }
+
   render() {
-    const { classes } = this.props;
+    const { classes, consultant } = this.props;
+
     return (
       <Card className={classes.card}>
         <CardContent>
-          <Typography variant="h6">DOE John</Typography>
-          <Typography variant="caption">john.doe@company.com</Typography>
-          <Typography variant="body1">Actuellement en mission chez :</Typography>
-          <List component="nav">
-            <ListItem>
-              <ListItemText primary="Client 1" secondary="depuis le 12 Mars"/>
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="Client 2" secondary="le 15 Décembre"/>
-            </ListItem>
-          </List>
+          <Typography variant="h6">
+            {consultant.firstname} {consultant.lastname}
+          </Typography>
+          <Typography variant="caption">{consultant.mail}</Typography>
+          {consultant.missions ? (
+            <>
+              <Typography variant="body1">Actuellement en mission chez :</Typography>
+              <List component="nav">{this._renderList(consultant.missions)}</List>
+            </>
+          ) : (
+            <Typography>N'est pas en mission pour le moment</Typography>
+          )}
         </CardContent>
       </Card>
     );

@@ -1,0 +1,26 @@
+{
+  "consultants": [
+    {
+      "id": 1,
+      "firstname": "John",
+      "lastname": "Doe",
+      "mail": "john.doe@cons.com",
+      "missions": [
+        {
+          "id": 1,
+          "clientName": "Company A",
+          "startDate": "2018-03-05",
+          "endDate": "2018-10-20",
+          "atCompany": true
+        },
+        {
+          "id": 2,
+          "clientName": "Company B",
+          "startDate": "2018-04-12",
+          "endDate": "2018-06-15",
+          "atCompany": false
+        }
+      ]
+    }
+  ]
+}
