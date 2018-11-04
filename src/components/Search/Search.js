@@ -24,13 +24,11 @@ const styles = theme => ({
 class Search extends Component {
   state = {
     value: 'client',
-
   };
 
-  handleChange = event => {
+  _handleChange = event => {
     this.setState({ value: event.target.value });
-  };
-
+  }; 
 
   render() {
     const { classes } = this.props;
@@ -38,12 +36,12 @@ class Search extends Component {
       <div className={classes.root}>
         <Grid>
           <Paper>
-            <FormControl>
+            <FormControl>          
               <Typography>Vous recherchez : </Typography>
               <RadioGroup
                 className={classes.group}
                 value={this.state.value}
-                onChange={this.handleChange}>
+                onChange={this._handleChange}>
                 <FormControlLabel
                   value="client"
                   control={<Radio color="primary" />}

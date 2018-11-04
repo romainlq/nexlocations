@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 
-import Header from './components/Header'
 import Container from './components/Container'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import HeaderContainer from './containers/HeaderContainer';
+
+const theme = createMuiTheme();
 class App extends Component {
 
   componentDidMount() {
@@ -9,12 +12,12 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <Header />
+      <MuiThemeProvider theme={theme}>
+        <HeaderContainer />
         <Container />
-      </div>
+      </MuiThemeProvider>
     );
   }
 }
 
-export default App;
+export default App; 
