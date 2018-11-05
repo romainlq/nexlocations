@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 const URL = 'http://localhost:3004';
-export default class componentName extends Component {
+export default class Result extends Component {
   // static propTypes = {
   //   prop: PropTypes
   // }

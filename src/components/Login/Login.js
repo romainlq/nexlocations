@@ -3,12 +3,16 @@ import PropTypes from 'prop-types';
 import { Card, CardContent, Typography, TextField, Button, InputLabel, FormControl } from '@material-ui/core';
 
 class Login extends Component {
-  static propTypes = {
-    prop: PropTypes
-  };
+  // static propTypes = {
+  //   prop: PropTypes
+  // };
 
-  state = {
-    name: ""
+  constructor(props) {
+    super(props);
+    this.state = {
+      name:''
+    }
+    this._handleButtonClick = this._handleButtonClick.bind(this);
   }
 
   handleChange = name => event => {
@@ -16,6 +20,11 @@ class Login extends Component {
       [name]: event.target.value,
     });
   };
+
+  _handleButtonClick() {
+    const { login } = this.props;
+    login();
+  }
 
   render() {
     return (
@@ -39,7 +48,7 @@ class Login extends Component {
               margin="normal"
               variant="outlined"
             />
-            <Button variant="outlined" color="primary" >
+            <Button onClick={this._handleButtonClick} variant="outlined" color="primary" >
               Se connecter
             </Button>
           </form>
