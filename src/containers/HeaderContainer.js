@@ -4,7 +4,6 @@ import Header from '../components/Header'
 import { loginAction, logoutAction }from '../actions/loginAction'
 
 const mapStateToProps = state => {
-  console.log('reducerState', state)
   return {
     isLoggedIn: state.loginReducer.isLoggedIn
   }

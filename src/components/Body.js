@@ -3,18 +3,27 @@ import Search from './Search/Search';
 import Result from './Result/Result';
 // import Map from './Map/Map'; // For now, we don't have the company address from backend
 import { Grid } from '@material-ui/core';
+import LoginContainer from '../containers/LoginContainer';
 
 
-class Container extends Component {
+class Body extends Component {
+
   render() {
+    const { isLoggedIn } = this.props;
     return (
       <Grid container direction="column" justify="center" alignItems="stretch">
-          <Search />
-          <Result />
-          {/* <Map /> */}
+        {isLoggedIn ? (
+          <>
+            <Search />
+            <Result />
+          </>
+        ) : (
+          <LoginContainer/>
+        )
+        }
       </Grid>
     )
   }
 }
 
-export default Container
+export default Body
