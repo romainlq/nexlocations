@@ -1,6 +1,6 @@
 import actionTypes from "../constants/actionTypes";
 
-const { LOG_IN, LOG_OUT } = actionTypes;
+const { LOG_IN, LOG_OUT, GET_USER } = actionTypes;
 
 const initialState = {
   isLoggedIn: false,
@@ -9,17 +9,22 @@ const initialState = {
 export default(state = initialState, action) => {
   switch(action.type) {
     case LOG_IN:
-      const { firstname, lastname, department } = action.payload;
       return {
         ...state,
-        isLoggedIn: true,
-        firstname: firstname,
-        lastname: lastname,
-        department: department,
+        isLoggedIn: true
       }
     case LOG_OUT:
       return {
         isLoggedIn: false
+      }
+    case GET_USER:
+    const { name, departmentId, departmentName, nexstaffRole} = action.payload;
+      return {
+        ...state,
+        name: name,
+        nexstaffRole : nexstaffRole,
+        departmentId: departmentId,
+        departmentName: departmentName,
       }
     default:
       return state

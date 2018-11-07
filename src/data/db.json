@@ -1,4 +1,15 @@
 {
+  "test": [
+  ],
+  "user": [
+    {
+      "id": 1,
+      "name": "name",
+      "nexstaffRole": "nexstaffRole",
+      "departmentId": "departmentId",
+      "departmentName": "departmentName"
+    }
+  ],
   "consultants": [
     {
       "id": 1,

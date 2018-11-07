@@ -3,7 +3,8 @@ import Body from '../components/Body';
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn
+        isLoggedIn: state.user.isLoggedIn,
+        consultant: state.consultants[0]
     }
 }
 
