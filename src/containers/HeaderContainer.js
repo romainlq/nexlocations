@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 import Header from '../components/Header'
 
-import { loginAction, logoutAction }from '../actions/loginAction'
+import { logoutAction, authenticateUserAction }from '../actions/userAction'
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.loginReducer.isLoggedIn
+    user: state.user
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: () => dispatch(loginAction()),
-  logout: () => dispatch(logoutAction())
+  login: () => dispatch(authenticateUserAction()),
+  logout: () => dispatch(logoutAction()),
 })
 
 

@@ -6,10 +6,6 @@ import axios from 'axios';
 
 const URL = 'http://localhost:3004';
 export default class Result extends Component {
-  // static propTypes = {
-  //   prop: PropTypes
-  // }
-
   state = {
     consultant: null
   };
