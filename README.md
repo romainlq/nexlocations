@@ -1,7 +1,25 @@
 # NexLocations
 
 Permet de visualiser ou sont les consultants en mission (ou non)
-- Afficher si ils sont en congés ou non ?
+
+---------------
+
+## Comment lancer le projet
+
+#### Installation :
+
+`git clone https://github.com/romainwn/nexlocations.git`
+
+`cd nexlocations`
+
+Installation des dépendances :
+`yarn` ou `npm i`
+
+Lancement de l'appli :
+`yarn start` ou `npm run start`
+
+Lancement du serveur local :
+`yarn server` ou `npm run server`
 
 ## TODO
 - [ ] Afficher les infos d'un consultant
@@ -13,7 +31,7 @@ Permet de visualiser ou sont les consultants en mission (ou non)
   - [ ] depuis le serv local
   - [ ] depuis le backend
 - [ ] add precommit lint
-- [ ] Map (impossible pour le moment, on n'a pas l'adresse des clients)
+- [ ] Map (`project.location`)
   - Afficher tous les consultants
   - Afficher en fonction d'une entreprise
   - Afficher en fonction d'un département ?
