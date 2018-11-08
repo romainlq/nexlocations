@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import Header from '../components/Header'
 
-import { logoutAction, authenticateUserAction }from '../actions/userAction'
+import { userActions } from '../actions';
+const { logoutAction, authenticateUserAction } = userActions;
 
 const mapStateToProps = state => {
   return {

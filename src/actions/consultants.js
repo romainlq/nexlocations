@@ -5,7 +5,7 @@ const { GET_CONSULTANTS } = actionTypes;
 
 const URL = 'http://localhost:3004';
 
-export const getConsultantsAction = () => {
+const getConsultantsAction = () => {
   return dispatch => {
     return axios.get(`${URL}/consultants`).then(response =>
       dispatch({
@@ -14,4 +14,8 @@ export const getConsultantsAction = () => {
       })
     );
   };
+};
+
+export default {
+  getConsultantsAction
 };
