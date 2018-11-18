@@ -57,7 +57,7 @@ class ConsultantCard extends Component {
             {consultant.firstname} {consultant.lastname}
           </Typography>
           <Typography variant="caption">{consultant.mail}</Typography>
-          {consultant.missions ? (
+          {consultant.missions.length > 0 ? (
             <React.Fragment>
               <Typography variant="body1">{`Actuellement en mission chez :`}</Typography>
               <List component="nav">{this._renderList(consultant.missions)}</List>
