@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Search from './Search/Search';
 import Result from './Result/Result';
 // import Map from './Map/Map'; // For now, we don't have the company address from backend

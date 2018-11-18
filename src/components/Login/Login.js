@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Card, CardContent, Typography, TextField, Button, InputLabel, FormControl } from '@material-ui/core';
 
 class Login extends Component {
-  // static propTypes = {
-  //   prop: PropTypes
-  // };
+  static propTypes = {
+    login: PropTypes.func.isRequired
+  };
 
   constructor(props) {
     super(props);

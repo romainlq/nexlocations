@@ -20,7 +20,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "server": "json-server src/data/db.json --port 3004"
+    "server": "json-server src/data/db.json --port 3004",
+    "everything": "yarn start & yarn server && fg"
   },
   "eslintConfig": {
     "extends": "react-app"
