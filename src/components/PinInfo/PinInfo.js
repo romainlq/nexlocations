@@ -1,22 +1,14 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 
-export default class PinInfo extends PureComponent {
+const PinInfo = ({ info: { clientName, consultants } }) => (
+  <div>
+    {clientName} |
+    <ul>
+      {consultants.map(consultant => (
+        <li>{consultant.name}</li>
+      ))}
+    </ul>
+  </div>
+);
 
-  render() {
-    const {info} = this.props;
-    const displayName = `${info.city}, ${info.state}`;
-
-    return (
-      <div>
-        <div>
-          {displayName} | <a target="_new"
-          href={`http://en.wikipedia.org/w/index.php?title=Special:Search&search=${displayName}`}>
-            Wikipedia
-          </a>
-        </div>
-        <img width={240} src={info.image} alt={info.city}/>
-      </div>
-    );
-  }
-}
-
+export default PinInfo;
