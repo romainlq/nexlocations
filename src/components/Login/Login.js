@@ -10,7 +10,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name:''
+      username:''
     }
     this._handleButtonClick = this._handleButtonClick.bind(this);
   }
@@ -23,7 +23,8 @@ class Login extends Component {
 
   _handleButtonClick() {
     const { login } = this.props;
-    login();
+    const { username, password } = this.state;
+    login({username, password});
   }
 
   render() {
@@ -35,8 +36,8 @@ class Login extends Component {
             <TextField
               id="outlined-name"
               label="Nom utilisateur"
-              value={this.state.name}
-              onChange={this.handleChange('name')}
+              value={this.state.username}
+              onChange={this.handleChange('username')}
               margin="normal"
               variant="outlined"
             />
@@ -47,6 +48,7 @@ class Login extends Component {
               autoComplete="current-password"
               margin="normal"
               variant="outlined"
+              onChange={this.handleChange('password')}
             />
             <Button onClick={this._handleButtonClick} variant="outlined" color="primary" >
               Se connecter

@@ -5,17 +5,22 @@ const { LOG_IN, LOG_OUT, GET_USER } = actionTypes;
 
 const URL = 'http://localhost:3004';
 
-const authenticateUserAction = () => {
+const authenticateUserAction = ({username, password}) => {
+  let data = 'username=' + username + '&password=' + encodeURIComponent(password);
+  const optionsPost = {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    data,
+    url : `km/login`
+  }
+  const optionsGet = {
+    method:'get',
+    url:`km/services/user`
+  }
   return dispatch => {
-    return axios
-      .post(`${URL}/test`, {
-        params: {
-          username: 'test',
-          password: 'test'
-        }
-      })
+    return axios(optionsPost)
       .then(response => console.log(response)) // TODO: Gerer l'erreur d'authent
-      .then(() => axios.get(`${URL}/user/1`))
+      .then(() => axios(optionsGet))
       .then(userInfos => {
         console.log(userInfos);
         dispatch(getUser(userInfos.data));

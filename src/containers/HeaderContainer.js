@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: () => dispatch(authenticateUserAction()),
+  login: ({username, password}) => dispatch(authenticateUserAction({username, password})),
   logout: () => dispatch(logoutAction()),
 })
 

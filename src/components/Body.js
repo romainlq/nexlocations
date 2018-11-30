@@ -7,7 +7,7 @@ import LoginContainer from '../containers/LoginContainer';
 
 const Body = ({ isLoggedIn }) => (
   <Grid container direction="column" justify="center" alignItems="stretch">
-    {!isLoggedIn ? (
+    {isLoggedIn ? (
       <>
         {/* <Search /> */}
         {/* <Result /> */}
