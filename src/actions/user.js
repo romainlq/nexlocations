@@ -3,8 +3,6 @@ import axios from 'axios';
 
 const { LOG_IN, LOG_OUT, GET_USER } = actionTypes;
 
-const URL = 'http://localhost:3004';
-
 const authenticateUserAction = ({username, password}) => {
   let data = 'username=' + username + '&password=' + encodeURIComponent(password);
   const optionsPost = {
@@ -22,7 +20,11 @@ const authenticateUserAction = ({username, password}) => {
       .then(response => console.log(response)) // TODO: Gerer l'erreur d'authent
       .then(() => axios(optionsGet))
       .then(userInfos => {
-        console.log(userInfos);
+        console.log(userInfos.data);
+        let user = userInfos.data;
+        sessionStorage.setItem("userRole", user.nexstaffRole);
+        sessionStorage.setItem("userDepartmentName", user.departmentName);
+        sessionStorage.setItem("userDepartmentId", user.departmentId);
         dispatch(getUser(userInfos.data));
         dispatch(loginAction());
       });

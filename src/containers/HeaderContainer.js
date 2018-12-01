@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Header from '../components/Header'
 
 import { userActions } from '../actions';
-const { logoutAction, authenticateUserAction } = userActions;
+const { logoutAction } = userActions;
 
 const mapStateToProps = state => {
   return {
@@ -11,7 +11,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: ({username, password}) => dispatch(authenticateUserAction({username, password})),
   logout: () => dispatch(logoutAction()),
 })
 

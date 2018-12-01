@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import ExitToAppRounded from '@material-ui/icons/ExitToAppRounded';
 
 const styles = {
   root: {
@@ -20,14 +21,11 @@ const styles = {
   }
 };
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this._handleButtonClick = this._handleButtonClick.bind(this);
-  }
 
-  _handleButtonClick() {
-    const { user, login, logout } = this.props;
-    !user.isLoggedIn ? login() : logout();
+  _handleLogOutButtonClick(e) {
+    e.preventDefault();
+    const { logout } = this.props;
+    logout();
   }
 
   render() {
@@ -42,21 +40,20 @@ class Header extends Component {
 
             <div className={classes.groupRight}>
               {user.isLoggedIn && (
-                <Typography
-                  className={classes.grow}
-                  variant="overline"
-                  color="inherit"
-                >
-                  {user.firstname} {user.lastname}
-                </Typography>
+                <>
+                  <Typography
+                    className={classes.grow}
+                    variant="overline"
+                    color="inherit"
+                  >
+                    {user.name}
+                  </Typography>
+                  <Button color="inherit" onClick={(e) => this._handleLogOutButtonClick(e)}>
+                    <ExitToAppRounded/>
+                  </Button>
+                </>
               )}
-              <Button
-                onClick={this._handleButtonClick}
-                variant="outlined"
-                color="secondary"
-              >
-                {user.isLoggedIn ? 'Deconnexion' : 'Se connecter'}
-              </Button>
+
             </div>
           </Toolbar>
         </AppBar>
