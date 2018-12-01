@@ -41,7 +41,9 @@ class ConsultantCard extends Component {
       <ListItem key={mission.id}>
         <ListItemText
           primary={mission.clientName}
-          secondary={`depuis le ${mission.startDate} et jusqu'au ${mission.endDate}`}
+          secondary={`depuis le ${mission.startDate} et jusqu'au ${
+            mission.endDate
+          }`}
         />
       </ListItem>
     ));
@@ -60,7 +62,9 @@ class ConsultantCard extends Component {
           {consultant.missions.length > 0 ? (
             <React.Fragment>
               <Typography variant="body1">{`Actuellement en mission chez :`}</Typography>
-              <List component="nav">{this._renderList(consultant.missions)}</List>
+              <List component="nav">
+                {this._renderList(consultant.missions)}
+              </List>
             </React.Fragment>
           ) : (
             <Typography>{`N'est pas en mission pour le moment`}</Typography>

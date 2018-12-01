@@ -4,19 +4,18 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
 const PinInfo = ({ info: { clientName, projects } }) => {
-  const _renderConsultants = (consultants) =>
+  const _renderConsultants = consultants =>
     consultants.map(consultant => (
       <ListItem key={consultant.id}>{consultant.name}</ListItem>
     ));
 
-  const _renderProjects = (projects) => (
+  const _renderProjects = projects =>
     projects.map(project => (
-    <List>
-      <ListItem>{project.projectName}</ListItem>
-      {project.consultants && _renderConsultants(project.consultants)}
-    </List>
-      ))
-  );
+      <List>
+        <ListItem>{project.projectName}</ListItem>
+        {project.consultants && _renderConsultants(project.consultants)}
+      </List>
+    ));
 
   return (
     <React.Fragment>

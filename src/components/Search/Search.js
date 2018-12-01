@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import { Paper, RadioGroup, FormControl, FormControlLabel, Radio, withStyles, Typography } from '@material-ui/core';
+import {
+  Paper,
+  RadioGroup,
+  FormControl,
+  FormControlLabel,
+  Radio,
+  withStyles,
+  Typography
+} from '@material-ui/core';
 
 const styles = theme => ({
   root: {
-    marginBottom: '30px',
+    marginBottom: '30px'
   },
   formControl: {
-    margin: theme.spacing.unit * 3,
-
+    margin: theme.spacing.unit * 3
   },
   group: {
-    display:'flex',
-    flexDirection:'row',
-    margin: `${theme.spacing.unit}px 0`,
+    display: 'flex',
+    flexDirection: 'row',
+    margin: `${theme.spacing.unit}px 0`
   },
   container: {
     backgroundColor: '#1abc9c',
@@ -23,25 +30,27 @@ const styles = theme => ({
 });
 class Search extends Component {
   state = {
-    value: 'client',
+    value: 'client'
   };
 
   _handleChange = event => {
     this.setState({ value: event.target.value });
-  }; 
-
+  };
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
         <Grid>
           <Paper>
-            <FormControl>          
+            <FormControl>
+              {' '}
+                 
               <Typography>Vous recherchez : </Typography>
               <RadioGroup
                 className={classes.group}
                 value={this.state.value}
-                onChange={this._handleChange}>
+                onChange={this._handleChange}
+              >
                 <FormControlLabel
                   value="client"
                   control={<Radio color="primary" />}

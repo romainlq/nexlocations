@@ -29,7 +29,8 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
+      .spacing.unit * 3}px`
   },
   avatar: {
     margin: theme.spacing.unit,
@@ -63,7 +64,7 @@ class Login extends Component {
   };
 
   _handleButtonClick(event) {
-    event.preventDefault()
+    event.preventDefault();
     const { login } = this.props;
     const { username, password } = this.state;
     login({ username, password });
@@ -82,7 +83,12 @@ class Login extends Component {
             Connexion
           </Typography>
 
-          <form className={classes.form} noValidate autoComplete="off" onSubmit={(e) => this._handleButtonClick(e)}>
+          <form
+            className={classes.form}
+            noValidate
+            autoComplete="off"
+            onSubmit={e => this._handleButtonClick(e)}
+          >
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="username">Nom utilisateur</InputLabel>
               <Input

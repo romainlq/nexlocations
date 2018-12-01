@@ -3,18 +3,19 @@ import axios from 'axios';
 
 const { LOG_IN, LOG_OUT, GET_USER } = actionTypes;
 
-const authenticateUserAction = ({username, password}) => {
-  let data = 'username=' + username + '&password=' + encodeURIComponent(password);
+const authenticateUserAction = ({ username, password }) => {
+  let data =
+    'username=' + username + '&password=' + encodeURIComponent(password);
   const optionsPost = {
     method: 'POST',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
     data,
-    url : `km/login`
-  }
+    url: `km/login`
+  };
   const optionsGet = {
-    method:'get',
-    url:`km/services/user`
-  }
+    method: 'get',
+    url: `km/services/user`
+  };
   return dispatch => {
     return axios(optionsPost)
       .then(response => console.log(response)) // TODO: Gerer l'erreur d'authent
@@ -22,16 +23,16 @@ const authenticateUserAction = ({username, password}) => {
       .then(userInfos => {
         console.log(userInfos.data);
         let user = userInfos.data;
-        sessionStorage.setItem("userRole", user.nexstaffRole);
-        sessionStorage.setItem("userDepartmentName", user.departmentName);
-        sessionStorage.setItem("userDepartmentId", user.departmentId);
+        sessionStorage.setItem('userRole', user.nexstaffRole);
+        sessionStorage.setItem('userDepartmentName', user.departmentName);
+        sessionStorage.setItem('userDepartmentId', user.departmentId);
         dispatch(getUser(userInfos.data));
         dispatch(loginAction());
       });
   };
 };
 
-const getUser = (userInfos) => ({ type: GET_USER, payload: userInfos });
+const getUser = userInfos => ({ type: GET_USER, payload: userInfos });
 
 const loginAction = () => ({
   type: LOG_IN

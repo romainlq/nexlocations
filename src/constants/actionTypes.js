@@ -1,5 +1,5 @@
-const LOG_IN = "LOG_IN";
-const LOG_OUT = "LOG_OUT";
+const LOG_IN = 'LOG_IN';
+const LOG_OUT = 'LOG_OUT';
 const GET_CONSULTANTS = 'GET_CONSULTANTS';
 const GET_USER = 'GET_USER';
 

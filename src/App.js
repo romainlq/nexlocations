@@ -17,22 +17,21 @@ const theme = createMuiTheme({
     secondary: {
       light: '#df6354',
       main: '#d73c2a',
-      dark: '#962a1d',
-    },
+      dark: '#962a1d'
+    }
   },
   typography: {
-    useNextVariants: true,
-  },
+    useNextVariants: true
+  }
 });
 class App extends Component {
-
   componentDidMount() {
-    document.title = 'NexLocations'
+    document.title = 'NexLocations';
   }
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <CssBaseline/>
+        <CssBaseline />
         <HeaderContainer />
         <BodyContainer />
       </MuiThemeProvider>
@@ -40,4 +39,4 @@ class App extends Component {
   }
 }
 
-export default App; 
+export default App;

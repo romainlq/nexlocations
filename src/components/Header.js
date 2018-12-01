@@ -21,7 +21,6 @@ const styles = {
   }
 };
 class Header extends Component {
-
   _handleLogOutButtonClick(e) {
     e.preventDefault();
     const { logout } = this.props;
@@ -48,12 +47,14 @@ class Header extends Component {
                   >
                     {user.name}
                   </Typography>
-                  <Button color="inherit" onClick={(e) => this._handleLogOutButtonClick(e)}>
-                    <ExitToAppRounded/>
+                  <Button
+                    color="inherit"
+                    onClick={e => this._handleLogOutButtonClick(e)}
+                  >
+                    <ExitToAppRounded />
                   </Button>
                 </>
               )}
-
             </div>
           </Toolbar>
         </AppBar>

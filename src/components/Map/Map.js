@@ -13,8 +13,8 @@ const PROJECTS = [
     longitude: 2.263463,
     projects: [
       {
-        id:1,
-        projectName: "Project 1",
+        id: 1,
+        projectName: 'Project 1',
         consultants: [
           {
             id: 1,
@@ -31,8 +31,8 @@ const PROJECTS = [
         ]
       },
       {
-        id:2,
-        projectName: "Project 2",
+        id: 2,
+        projectName: 'Project 2',
         consultants: [
           {
             id: 1,
@@ -49,7 +49,6 @@ const PROJECTS = [
         ]
       }
     ]
-    
   },
   { clientName: 'Renault', latitude: 48.833269, longitude: 2.238756 },
   { clientName: 'PSA', latitude: 48.802525, longitude: 2.338276 },
@@ -85,8 +84,8 @@ class Map extends Component {
     this.setState({
       viewport: {
         ...this.state.viewport,
-        width: this.props.width || window.innerWidth ,
-        height: this.props.height || window.innerHeight-150
+        width: this.props.width || window.innerWidth,
+        height: this.props.height || window.innerHeight - 150
       }
     });
   };
@@ -106,14 +105,18 @@ class Map extends Component {
   _renderPopup() {
     const { popupInfo } = this.state;
 
-    return popupInfo && (
-      <Popup tipSize={5}
-        anchor="top"
-        longitude={popupInfo.longitude}
-        latitude={popupInfo.latitude}
-        onClose={() => this.setState({popupInfo: null})} >
-        <PinInfo info={popupInfo} />
-      </Popup>
+    return (
+      popupInfo && (
+        <Popup
+          tipSize={5}
+          anchor="top"
+          longitude={popupInfo.longitude}
+          latitude={popupInfo.latitude}
+          onClose={() => this.setState({ popupInfo: null })}
+        >
+          <PinInfo info={popupInfo} />
+        </Popup>
+      )
     );
   }
 

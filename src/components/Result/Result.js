@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import ConsultantCard from '../ConsultantCard/ConsultantCard';
 import axios from 'axios';
 
-
 const URL = 'http://localhost:3004';
 export default class Result extends Component {
   state = {
@@ -13,16 +12,21 @@ export default class Result extends Component {
   componentDidMount = () => {
     axios
       .get(`${URL}/consultants/1`)
-      .then(response => this.setState(() => ({ consultant: response.data, isLoading: false })));
+      .then(response =>
+        this.setState(() => ({ consultant: response.data, isLoading: false }))
+      );
   };
 
   render() {
     const { consultant } = this.state;
-    return <div>
-            {consultant ?
-              <ConsultantCard consultant={consultant} />
-              : <p>Loading ...</p>
-            }
-          </div>;
+    return (
+      <div>
+        {consultant ? (
+          <ConsultantCard consultant={consultant} />
+        ) : (
+          <p>Loading ...</p>
+        )}
+      </div>
+    );
   }
 }

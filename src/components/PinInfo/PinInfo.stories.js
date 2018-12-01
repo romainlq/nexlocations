@@ -4,18 +4,15 @@ import { storiesOf } from '@storybook/react';
 import PinInfo from './PinInfo';
 
 const info = {
-  clientName: "Carrefour",
+  clientName: 'Carrefour',
   consultants: [
     {
-      name: "Toto"
+      name: 'Toto'
     },
     {
-      name: "tutu"
+      name: 'tutu'
     }
   ]
-}
+};
 
-storiesOf('PinInfo', module)
-      .add('test', () => (
-        <PinInfo info={info}/>
-      ));
+storiesOf('PinInfo', module).add('test', () => <PinInfo info={info} />);
