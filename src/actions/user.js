@@ -1,7 +1,14 @@
 import actionTypes from '../constants/actionTypes';
 import axios from 'axios';
 
-const { LOG_IN, LOG_OUT, GET_USER } = actionTypes;
+const {
+  LOG_IN,
+  LOG_OUT,
+  GET_USER,
+  START_LOGGIN,
+  END_LOGGIN,
+  ERROR_LOGIN
+} = actionTypes;
 
 const authenticateUserAction = ({ username, password }) => {
   let data =
@@ -17,8 +24,12 @@ const authenticateUserAction = ({ username, password }) => {
     url: `km/services/user`
   };
   return dispatch => {
+    dispatch(startLoginAction());
     return axios(optionsPost)
       .then(response => console.log(response)) // TODO: Gerer l'erreur d'authent
+      .catch(() => {
+        dispatch(errorLoginAction());
+      })
       .then(() => axios(optionsGet))
       .then(userInfos => {
         console.log(userInfos.data);
@@ -28,11 +39,17 @@ const authenticateUserAction = ({ username, password }) => {
         sessionStorage.setItem('userDepartmentId', user.departmentId);
         dispatch(getUser(userInfos.data));
         dispatch(loginAction());
+      })
+      .finally(() => {
+        dispatch(endLoginAction());
       });
   };
 };
 
-const getUser = userInfos => ({ type: GET_USER, payload: userInfos });
+const getUser = userInfos => ({
+  type: GET_USER,
+  payload: userInfos
+});
 
 const loginAction = () => ({
   type: LOG_IN
@@ -40,6 +57,17 @@ const loginAction = () => ({
 
 const logoutAction = () => ({
   type: LOG_OUT
+});
+
+const errorLoginAction = () => ({
+  type: ERROR_LOGIN
+});
+
+const startLoginAction = () => ({
+  type: START_LOGGIN
+});
+const endLoginAction = () => ({
+  type: END_LOGGIN
 });
 
 export default {

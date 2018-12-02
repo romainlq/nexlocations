@@ -11,6 +11,7 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import MDSpinner from 'react-md-spinner';
 
 const styles = theme => ({
   main: {
@@ -42,6 +43,9 @@ const styles = theme => ({
   },
   submit: {
     marginTop: theme.spacing.unit * 3
+  },
+  spinner: {
+    marginTop: theme.spacing.unit * 3
   }
 });
 class Login extends Component {
@@ -71,7 +75,7 @@ class Login extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, loading, error } = this.props;
     return (
       <div className={classes.main}>
         <CssBaseline />
@@ -121,6 +125,19 @@ class Login extends Component {
               Se connecter
             </Button>
           </form>
+
+          {loading && (
+            <MDSpinner
+              size={50}
+              singleColor="#63a39e"
+              className={classes.spinner}
+            />
+          )}
+          {error && (
+            <Typography variant="overline" color="error">
+              Erreur : Mauvais identifiants
+            </Typography>
+          )}
         </Paper>
       </div>
     );
