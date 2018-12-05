@@ -84,8 +84,8 @@ class Map extends Component {
     this.setState({
       viewport: {
         ...this.state.viewport,
-        width: this.props.width || window.innerWidth,
-        height: this.props.height || window.innerHeight - 150
+        width: this.props.width || window.innerWidth - 15,
+        height: this.props.height || window.innerHeight - 100
       }
     });
   };
