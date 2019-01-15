@@ -13,6 +13,7 @@ import MapPage from './pages/MapPage';
 import PageNotFound from './pages/PageNotFound';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
+import SearchPage from './pages/Search';
 
 const theme = createMuiTheme({
   palette: {
@@ -70,6 +71,12 @@ class App extends Component {
               exact
               component={HomePage}
             />
+            <PrivateRoute
+              isLoggedIn={isLoggedIn}
+              path="/search"
+              component={SearchPage}
+            />
+
             <PrivateRoute
               isLoggedIn={isLoggedIn}
               path="/map"
