@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ExitToAppRounded from '@material-ui/icons/ExitToAppRounded';
+import CustomLink from './CustomLink';
 
 const styles = {
   root: {
@@ -33,9 +34,11 @@ class Header extends Component {
       <div className={classes.root}>
         <AppBar position="static" color="primary">
           <Toolbar>
-            <Typography className={classes.grow} variant="h6" color="inherit">
-              NexLocations
-            </Typography>
+            <CustomLink to="/">
+              <Typography className={classes.grow} variant="h6" color="inherit">
+                NexLocations
+              </Typography>
+            </CustomLink>
 
             <div className={classes.groupRight}>
               {user.isLoggedIn && (

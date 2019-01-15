@@ -10,7 +10,7 @@ const {
   ERROR_LOGIN
 } = actionTypes;
 
-const authenticateUserAction = ({ username, password }) => {
+const authenticateUserAction = ({ username, password }, cb) => {
   let data =
     'username=' + username + '&password=' + encodeURIComponent(password);
   const optionsPost = {
@@ -39,6 +39,7 @@ const authenticateUserAction = ({ username, password }) => {
         sessionStorage.setItem('userDepartmentId', user.departmentId);
         dispatch(getUser(userInfos.data));
         dispatch(loginAction());
+        cb();
       })
       .finally(() => {
         dispatch(endLoginAction());

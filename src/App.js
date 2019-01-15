@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import HeaderContainer from './containers/HeaderContainer';
-import BodyContainer from './containers/BodyContainer';
+import MapPage from './pages/MapPage';
+import PageNotFound from './pages/PageNotFound';
+import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
 
 const theme = createMuiTheme({
   palette: {
@@ -24,16 +32,52 @@ const theme = createMuiTheme({
     useNextVariants: true
   }
 });
+
+const PrivateRoute = ({ component: Component, isLoggedIn, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        isLoggedIn ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/login',
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  );
+};
 class App extends Component {
   componentDidMount() {
     document.title = 'NexLocations';
   }
   render() {
+    const { isLoggedIn } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
-        <HeaderContainer />
-        <BodyContainer />
+        <Router>
+          <Switch>
+            <Route path="/login" exact component={LoginPage} />
+            <PrivateRoute
+              isLoggedIn={isLoggedIn}
+              path="/"
+              exact
+              component={HomePage}
+            />
+            <PrivateRoute
+              isLoggedIn={isLoggedIn}
+              path="/map"
+              component={MapPage}
+            />
+            <Route status={404} path="*" component={PageNotFound} />
+          </Switch>
+        </Router>
       </MuiThemeProvider>
     );
   }

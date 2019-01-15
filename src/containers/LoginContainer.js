@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import Login from '../components/Login/Login';
 import { userActions } from '../actions';
 
@@ -12,12 +14,14 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  login: ({ username, password }) => {
-    dispatch(authenticateUserAction({ username, password }));
+  login: ({ username, password }, cb) => {
+    dispatch(authenticateUserAction({ username, password }, cb));
   }
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login)
+);

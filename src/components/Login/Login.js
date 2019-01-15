@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Redirect } from 'react-router-dom';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -57,7 +59,8 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: ''
+      username: '',
+      redirectToRefferer: false
     };
   }
 
@@ -71,11 +74,23 @@ class Login extends Component {
     event.preventDefault();
     const { login } = this.props;
     const { username, password } = this.state;
-    login({ username, password });
+    login({ username, password }, () => {
+      console.log('good, lets go');
+      this.setState(() => ({
+        redirectToRefferer: true
+      }));
+    });
   }
 
   render() {
+    let { from } = this.props.location.state || { from: { pathname: '/' } };
+    const { redirectToRefferer } = this.state;
     const { classes, loading, error } = this.props;
+    console.log('redirectToRefferer', redirectToRefferer);
+    console.log('from', from);
+
+    if (redirectToRefferer) return <Redirect to={from} />;
+
     return (
       <div className={classes.main}>
         <CssBaseline />
@@ -135,7 +150,7 @@ class Login extends Component {
           )}
           {error && (
             <Typography variant="overline" color="error">
-              Erreur : Mauvais identifiants
+              Et si on essayait avec les bons identifiants ?
             </Typography>
           )}
         </Paper>

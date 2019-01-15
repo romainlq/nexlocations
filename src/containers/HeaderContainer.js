@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import Header from '../components/Header';
 
 import { userActions } from '../actions';
@@ -14,7 +16,9 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logoutAction())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Header)
+);

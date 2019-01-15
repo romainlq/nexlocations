@@ -26,7 +26,7 @@ const PROJECTS = [
           },
           {
             id: 3,
-            name: 'Pif paf pouf'
+            name: 'Pif paf pouf bim'
           }
         ]
       },
