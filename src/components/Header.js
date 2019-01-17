@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -21,49 +21,47 @@ const styles = {
     alignItems: 'center'
   }
 };
-class Header extends Component {
-  _handleLogOutButtonClick(e) {
+
+const Header = ({ user, classes }) => {
+  const _handleLogOutButtonClick = e => {
     e.preventDefault();
     const { logout } = this.props;
     logout();
-  }
+  };
 
-  render() {
-    const { user, classes } = this.props;
-    return (
-      <div className={classes.root}>
-        <AppBar position="static" color="primary">
-          <Toolbar>
-            <CustomLink to="/">
-              <Typography className={classes.grow} variant="h6" color="inherit">
-                NexLocations
-              </Typography>
-            </CustomLink>
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" color="primary">
+        <Toolbar>
+          <CustomLink to="/">
+            <Typography className={classes.grow} variant="h6" color="inherit">
+              NexLocations
+            </Typography>
+          </CustomLink>
 
-            <div className={classes.groupRight}>
-              {user.isLoggedIn && (
-                <>
-                  <Typography
-                    className={classes.grow}
-                    variant="overline"
-                    color="inherit"
-                  >
-                    {user.name}
-                  </Typography>
-                  <Button
-                    color="inherit"
-                    onClick={e => this._handleLogOutButtonClick(e)}
-                  >
-                    <ExitToAppRounded />
-                  </Button>
-                </>
-              )}
-            </div>
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
-  }
-}
+          <div className={classes.groupRight}>
+            {user.isLoggedIn && (
+              <>
+                <Typography
+                  className={classes.grow}
+                  variant="overline"
+                  color="inherit"
+                >
+                  {user.name}
+                </Typography>
+                <Button
+                  color="inherit"
+                  onClick={e => _handleLogOutButtonClick(e)}
+                >
+                  <ExitToAppRounded />
+                </Button>
+              </>
+            )}
+          </div>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+};
 
 export default withStyles(styles)(Header);

@@ -26,17 +26,8 @@ const styles = theme => ({
   }
 });
 
-class ConsultantCard extends Component {
-  static propTypes = {
-    consultant: PropTypes.shape({
-      firstname: PropTypes.string,
-      lastname: PropTypes.string,
-      mail: PropTypes.string,
-      missions: PropTypes.array
-    })
-  };
-
-  _renderList(missions) {
+const ConsultantCard = ({ classes, consultant }) => {
+  const _renderList = missions => {
     return missions.map(mission => (
       <ListItem key={mission.id}>
         <ListItemText
@@ -47,32 +38,35 @@ class ConsultantCard extends Component {
         />
       </ListItem>
     ));
-  }
+  };
 
-  render() {
-    const { classes, consultant } = this.props;
+  return (
+    <Card className={classes.card}>
+      <CardContent>
+        <Typography variant="h6">
+          {consultant.firstname} {consultant.lastname}
+        </Typography>
+        <Typography variant="caption">{consultant.mail}</Typography>
+        {consultant.missions.length > 0 ? (
+          <React.Fragment>
+            <Typography variant="body1">{`Actuellement en mission chez :`}</Typography>
+            <List component="nav">{this._renderList(consultant.missions)}</List>
+          </React.Fragment>
+        ) : (
+          <Typography>{`N'est pas en mission pour le moment`}</Typography>
+        )}
+      </CardContent>
+    </Card>
+  );
+};
 
-    return (
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography variant="h6">
-            {consultant.firstname} {consultant.lastname}
-          </Typography>
-          <Typography variant="caption">{consultant.mail}</Typography>
-          {consultant.missions.length > 0 ? (
-            <React.Fragment>
-              <Typography variant="body1">{`Actuellement en mission chez :`}</Typography>
-              <List component="nav">
-                {this._renderList(consultant.missions)}
-              </List>
-            </React.Fragment>
-          ) : (
-            <Typography>{`N'est pas en mission pour le moment`}</Typography>
-          )}
-        </CardContent>
-      </Card>
-    );
-  }
-}
+ConsultantCard.propTypes = {
+  consultant: PropTypes.shape({
+    firstname: PropTypes.string,
+    lastname: PropTypes.string,
+    mail: PropTypes.string,
+    missions: PropTypes.array
+  })
+};
 
 export default withStyles(styles)(ConsultantCard);

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
+import HeaderContainer from '../containers/HeaderContainer';
 
-export class PageNotFound extends Component {
-  render() {
-    return (
-      <div>
-        <h1>NOT FOUND</h1>
-      </div>
-    );
-  }
-}
+const PageNotFound = () => {
+  return (
+    <div>
+      <HeaderContainer />
+      <h1>NOT FOUND</h1>
+    </div>
+  );
+};
 
 export default PageNotFound;
