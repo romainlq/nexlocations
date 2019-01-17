@@ -7,8 +7,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
+import TextField from '@material-ui/core/TextField';
 import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -48,6 +47,9 @@ const styles = theme => ({
   },
   spinner: {
     marginTop: theme.spacing.unit * 3
+  },
+  errorMessage: {
+    textAlign: 'center'
   }
 });
 class Login extends Component {
@@ -109,24 +111,26 @@ class Login extends Component {
             onSubmit={e => this._handleButtonClick(e)}
           >
             <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="username">Nom utilisateur</InputLabel>
-              <Input
+              <TextField
                 id="username"
                 name="username"
                 autoComplete="username"
                 autoFocus
                 value={this.state.username}
                 onChange={this.handleChange('username')}
+                label="Nom utilisateur"
+                variant="outlined"
               />
             </FormControl>
             <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="password">Mot de passe</InputLabel>
-              <Input
+              <TextField
                 name="password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
                 onChange={this.handleChange('password')}
+                label="Mot de passe"
+                variant="outlined"
               />
             </FormControl>
 
@@ -149,7 +153,11 @@ class Login extends Component {
             />
           )}
           {error && (
-            <Typography variant="overline" color="error">
+            <Typography
+              variant="overline"
+              color="error"
+              className={classes.errorMessage}
+            >
               Et si on essayait avec les bons identifiants ?
             </Typography>
           )}
