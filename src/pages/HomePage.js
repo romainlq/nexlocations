@@ -11,6 +11,7 @@ const HomePage = () => {
       <h1> This is the home page</h1>
       <CustomLink to="/map">Map</CustomLink>
       <CustomLink to="/search">Search</CustomLink>
+      <CustomLink to="/food">Food</CustomLink>
     </div>
   );
 };

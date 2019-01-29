@@ -10,15 +10,20 @@ import CustomLink from './CustomLink';
 
 const styles = {
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    justifyContent: 'space-between'
   },
   grow: {
     flexGrow: 1,
     marginRight: 20
   },
-  groupRight: {
+  infos: {
     display: 'flex',
     alignItems: 'center'
+  },
+  groupRight: {
+    marginLeft: -12,
+    marginRight: 20
   }
 };
 
@@ -33,15 +38,24 @@ const Header = ({ user, classes }) => {
     <div className={classes.root}>
       <AppBar position="static" color="primary">
         <Toolbar>
-          <CustomLink to="/">
-            <Typography className={classes.grow} variant="h6" color="inherit">
-              NexLocations
-            </Typography>
-          </CustomLink>
+          <div>
+            <CustomLink to="/">
+              <Typography className={classes.grow} variant="h6" color="inherit">
+                NexLocations
+              </Typography>
+            </CustomLink>
+            {user.isLoggedIn && (
+              <>
+                <CustomLink to="/map">Map</CustomLink>
+                <CustomLink to="/search">Search</CustomLink>
+                <CustomLink to="/food">Food</CustomLink>
+              </>
+            )}
+          </div>
 
           <div className={classes.groupRight}>
             {user.isLoggedIn && (
-              <>
+              <div className={classes.infos}>
                 <Typography
                   className={classes.grow}
                   variant="overline"
@@ -55,7 +69,7 @@ const Header = ({ user, classes }) => {
                 >
                   <ExitToAppRounded />
                 </Button>
-              </>
+              </div>
             )}
           </div>
         </Toolbar>

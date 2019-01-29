@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderContainer from '../containers/HeaderContainer';
 import Map from '../components/Map/Map';
 
-const PROJECTS = [
+const RESTOS = [
   {
     clientName: 'Carrefour',
     latitude: 48.88793,
@@ -55,7 +55,7 @@ const MapPage = () => {
   return (
     <div>
       <HeaderContainer />
-      <Map data={PROJECTS} />
+      <Map data={RESTOS} food={true} />
     </div>
   );
 };
