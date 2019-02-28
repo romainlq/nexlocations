@@ -88,8 +88,6 @@ class Login extends Component {
     let { from } = this.props.location.state || { from: { pathname: '/' } };
     const { redirectToRefferer } = this.state;
     const { classes, loading, error } = this.props;
-    console.log('redirectToRefferer', redirectToRefferer);
-    console.log('from', from);
 
     if (redirectToRefferer) return <Redirect to={from} />;
 

@@ -11,9 +11,9 @@ const styles = theme => ({
   }
 });
 
-const PinInfo = ({ info: { clientName, projects }, classes }) => {
-  const _renderConsultants = consultants =>
-    consultants.map(consultant => (
+const PinInfo = ({ info: { clientName, projectList }, classes }) => {
+  const _renderConsultants = collaboratorList =>
+    collaboratorList.map(consultant => (
       <ListItem key={consultant.id}>
         <Typography variant="body2" classes={classes.consultant}>
           {consultant.name}
@@ -21,22 +21,23 @@ const PinInfo = ({ info: { clientName, projects }, classes }) => {
       </ListItem>
     ));
 
-  const _renderProjects = projects =>
-    projects.map(project => (
+  const _renderProjects = projectList =>
+    projectList.map(project => (
       <List>
         <ListItem>
           <Typography variant="subtitle2" color="primary.dark">
-            {project.projectName}
+            {project.name}
           </Typography>
         </ListItem>
-        {project.consultants && _renderConsultants(project.consultants)}
+        {project.collaboratorList &&
+          _renderConsultants(project.collaboratorList)}
       </List>
     ));
 
   return (
     <React.Fragment>
       <Typography variant="overline">{clientName}</Typography>
-      {projects && _renderProjects(projects)}
+      {projectList && _renderProjects(projectList)}
     </React.Fragment>
   );
 };
@@ -44,10 +45,10 @@ const PinInfo = ({ info: { clientName, projects }, classes }) => {
 PinInfo.propTypes = {
   info: PropTypes.shape({
     clientName: PropTypes.string,
-    projects: PropTypes.shape({
+    projectList: PropTypes.shape({
       id: PropTypes.number,
-      projectName: PropTypes.string.isRequired,
-      consultants: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      collaboratorList: PropTypes.shape({
         id: PropTypes.number,
         name: PropTypes.string
       }).isRequired
